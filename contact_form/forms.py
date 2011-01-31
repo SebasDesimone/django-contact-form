@@ -11,7 +11,7 @@ from django.core.mail import send_mail
 from django.template import loader, RequestContext
 from django.contrib.sites.models import Site, RequestSite
 from django.utils.translation import ugettext_lazy as _
-
+from django.core.mail import EmailMultiAlternatives
 
 __all__ = ('ContactBaseForm', 'ContactForm', 'AkismetContactForm')
 
@@ -233,7 +233,7 @@ class ContactBaseForm(forms.Form):
         """
         return ('contact_form_sent', (), {})
 
-        def save(self, fail_silently=False):
+    def save(self, fail_silently=False):
             """
             Build and send the email message.
 
